@@ -32,15 +32,7 @@ class AuthorController extends Controller
     {
         Author::create($request->all());
 
-        return redirect()->route('author.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Author $author)
-    {
-        //
+        return redirect()->route('authors.index');
     }
 
     /**
@@ -58,7 +50,7 @@ class AuthorController extends Controller
     {
         $author->update($request->all());
 
-        return redirect()->route('author.index');
+        return redirect()->route('authors.index');
     }
 
     /**
@@ -68,6 +60,6 @@ class AuthorController extends Controller
     {
         $author->delete();
 
-        return redirect()->route('author.index');
+        return redirect()->route('authors.index');
     }
 }
