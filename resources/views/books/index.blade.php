@@ -45,4 +45,8 @@
 
     @endif
 @endsection
-
+@section('pagination')
+    <div class="float-end">
+        {{ $books->links() }}
+</div>
+@endsection

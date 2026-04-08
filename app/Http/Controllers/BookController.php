@@ -14,7 +14,11 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+        $books = Book::with('author')
+        
+        
+        //aqui coloque la paginacion para que se muestre 10 libros y que cuando se cmbie de pagina con un filtro o busqueda se mantenga eso sin que cambie o elimine
+        ->paginate(10)->withQueryString();
 
         return view('books.index',compact('books'));
     }
