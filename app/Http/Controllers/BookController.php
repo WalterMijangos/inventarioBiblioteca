@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 use App\Models\Author;
 
+use App\Http\Requests\StoreBookRequest;
+
+
 class BookController extends Controller
 {
     /**
@@ -35,7 +38,7 @@ class BookController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBookRequest $request)
     {
         Book::create($request->all());
         return redirect()->route('books.index');
@@ -55,7 +58,7 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Book $book)
+    public function update(StoreBookRequest $request, Book $book)
     {
         $book->update($request->all());
         

@@ -13,11 +13,19 @@
         <div class="mb-3">
             <label class="form-label" for="title">Titulo:</label>
             <input type="text" name="title" value="{{ $book->title }}" class="form-control">
+            <!--alerta de error para el titulo-->
+            @error('title')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-3">
             <label class="form-label" for="year">Año:</label>
-            <input type="number" name="year" value="{{ $book->year }}" class="form-control">
+            <input type="text" name="year" value="{{ $book->year }}" class="form-control">
+            <!--//alerta de error para el año-->
+            @error('year')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-3">
@@ -31,6 +39,10 @@
                 </option>
                 @endforeach
             </select>
+             <!--//alerta de error para el autor-->
+            @error('author_id')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-3">
