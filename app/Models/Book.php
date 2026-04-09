@@ -9,7 +9,8 @@ class Book extends Model
     protected $fillable =[
         'title',
         'year',
-        'author_id'
+        'author_id',
+        'stock'
     ];
 
     //esta funcion es para relacionar el libro con el autor que se va a colocar en el formulario.

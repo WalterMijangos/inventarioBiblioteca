@@ -11,6 +11,10 @@
         <label for="name" class="form-label">Nombre del Autor:</label>
         <input type="text" name="name" placeholder ="Ingrese el nombre del autor..." class="form-control">
     </div>
+    <div class=" mb-3">
+        <label for="nationality" class="form-label">Nacionalidad del Autor:</label>
+        <input type="text" name="nationality" placeholder ="Ingrese la nacionalidad del autor..." class="form-control">
+    </div>
     <div class="mb-3">
         <button type="submit" class="btn btn-primary"> <i class="bi bi-floppy"></i> Guardar</button>
     </div>

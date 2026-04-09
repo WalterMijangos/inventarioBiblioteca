@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('year');
+            $table->integer('year');
             $table->foreignId('author_id')->constrained()->onDelete('cascade'); //esto es para relacionar la tabla de libros con la tabla de autores
+            $table->integer('stock')->default(0); //esto es para colocar el stock y que el valor por defecto sea 0
             $table->timestamps();
         });
     }

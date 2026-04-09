@@ -46,6 +46,15 @@
         </div>
 
         <div class="mb-3">
+            <label class="form-label" for="stock">Stock:</label>
+            <input type="text" name="stock" value="{{ $book->stock }}" class="form-control">
+            <!--//alerta de error para el stock-->
+            @error('stock')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <button type="submit" class="btn btn-success"><i class="bi bi-floppy"></i> Actualizar</button>
         </div>
         

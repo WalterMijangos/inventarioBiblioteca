@@ -25,7 +25,8 @@ class StoreBookRequest extends FormRequest
         return [
             'title' => 'required|max:300',
             'year' => 'required|numeric',
-            'author_id' => 'required|exists:authors,id'
+            'author_id' => 'required|exists:authors,id',
+            'stock' => 'required|numeric|min:0'
         ];
     }
 
@@ -37,7 +38,10 @@ class StoreBookRequest extends FormRequest
             'title.max' => 'El titulo no debe de pasar los 300 caracteres',
             'year.required' => 'El año es obligatorio',
             'year.numeric' => 'El año debe de ser un numero',
-            'author_id.required' => 'El autor es obligatorio'
+            'author_id.required' => 'El autor es obligatorio',
+            'stock.required' => 'El stock es obligatorio',
+            'stock.numeric' => 'El stock debe de ser un numero',
+            'stock.min' => 'El stock no puede ser negativo'
         ];
     }
 }

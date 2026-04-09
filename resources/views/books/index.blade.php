@@ -5,7 +5,7 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1><i class="bi bi-book"></i> Lista de libros</h1>
-        <a href="{{ route('books.create') }}" class="btn btn-primary">Agregar libro</a>
+        <a href="{{ route('books.create') }}" class="btn btn-primary"><i class="bi bi-plus-circle"> Agregar libro </i></a>
     </div>
 
     <!--Secion para el buscador y el filtro de author-->
@@ -25,7 +25,7 @@
                         </option>
                     @endforeach
                 </select>
-                <button class="btn btn-success" type="submit">Search</button>
+                <button class="btn btn-success" type="submit"><i class="bi bi-search"> Buscar</i></button>
             </form>
         </div>
     </div>
@@ -37,11 +37,12 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Título</th>
-                    <th>Año</th>
-                    <th>Autor</th>
-                    <th>Acciones</th>
+                    <th><i class="bi bi-file-earmark-person"> ID </i></th>
+                    <th><i class="bi bi-book"> Título </i></th>
+                    <th><i class="bi bi-calendar"> Año </i></th>
+                    <th><i class="bi bi-person"> Autor </i></th>
+                    <th><i class="bi bi-stack"> Stock </i></th>
+                    <th><i class="bi bi-pencil-square"> Acciones </i></th>
                 </tr>
             </thead>
             <tbody>
@@ -51,14 +52,16 @@
                         <td>{{ $book->title }}</td>
                         <td>{{ $book->year }}</td>
                         <td>{{ $book->author->name }}</td> <!-- Aquí se muestra el nombre del autor -->
+                        <td>{{ $book->stock }}</td>
+                        
                         <td>
-                            <a href="{{ route('books.edit', $book) }}" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="{{ route('books.edit', $book) }}" class="btn btn-sm btn-warning"><i class="bi bi-pencil-square"> Editar </i></a>
 
                             <!-- Formulario para eliminar el libro -->
                             <form action="{{ route('books.destroy', $book) }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este libro?')">Eliminar</button>
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este libro?')"><i class="bi bi-trash"> Eliminar </i></button>
                             </form>
                         </td>
                     </tr>

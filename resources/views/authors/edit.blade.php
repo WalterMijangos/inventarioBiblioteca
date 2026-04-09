@@ -13,6 +13,10 @@
             <label class="form-label" for="name">Nombre Autor:</label>
             <input type="text" name="name" value="{{ $author->name }}" class="form-control">
         </div>
+        <div class="mb-3">
+            <label class="form-label" for="nationality">Nacionalidad del Autor:</label>
+            <input type="text" name="nationality" value="{{ $author->nationality }}" class="form-control">
+        </div>
 
     
         <div class="mb-3">

@@ -40,6 +40,14 @@
         @enderror
     </div>
     <div class="mb-3">
+        <label for="stock" class="form-label">Stock:</label>
+        <input type="text" name="stock" placeholder ="Ingrese el stock..." class="form-control">
+        <!--//alerta de error para el stock-->
+        @error('stock')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="mb-3">
         <button type="submit" class="btn btn-primary"> <i class="bi bi-floppy"></i> Guardar</button>
     </div>
 </form>
