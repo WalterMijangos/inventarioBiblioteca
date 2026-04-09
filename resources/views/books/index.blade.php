@@ -8,6 +8,29 @@
         <a href="{{ route('books.create') }}" class="btn btn-primary">Agregar libro</a>
     </div>
 
+    <!--Secion para el buscador y el filtro de author-->
+    <div>
+        <div class="container mt-2">
+<!--Aqui esta la seccion para el buscador donde se piede buscar el titulo de un libro o el autor y muestre el resultado en la tabla-->
+            <form class="mb-3 d-flex gap-2" method="GET" action="{{route('books.index')}}"> 
+                <input class="form-control" type="search" placeholder="Buscar Libro o autor..." name="search" value="{{ request('search') }}"/>
+
+<!--Aqui se coloco el filtro del autor que se selecciona dentro de la lista de autores creados y que este tiene como funcion que cuando se selecione un autor muestre todos los libros de ese autor y el cambio lo aplica despues de seleccionar-->
+                <select name="author_id" class="form-select" onchange="this.form.submit()">
+                    <option value="">Todos los autores</option>
+                    @foreach($authors as $author)
+                        <option value="{{ $author->id }}" 
+                            {{ request('author_id') == $author->id ? 'selected' : '' }}>
+                            {{ $author->name }}
+                        </option>
+                    @endforeach
+                </select>
+                <button class="btn btn-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    
+
     @if($books->isEmpty())
         <p>No hay libros disponibles.</p>
     @else

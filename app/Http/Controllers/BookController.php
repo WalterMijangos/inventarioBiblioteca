@@ -17,13 +17,33 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::with('author')
-        
+        $books = Book::with('author');
+
+        //filtro para mostrar solo al autor y sus libros
+        if(request('author_id')){
+            $books->where('author_id', request('author_id'));
+        }
+
+        //buscador de titulo o autor de un libro
+        if(request('search')){
+            //aqui se hace consulta para que se pueda bucar el libro por titulo o por el nombre de autor.
+            $books->where(function($query){
+                //aqui se consulta el titulo del libro para que se pueda buscar el libro en el buscador y lo muestre
+                $query->where('title', 'like', '%' . request('search') . '%')
+                //el orwherehas es para que el se pueda buscar el nombre del autor y que muestre el libro que se busco
+                ->orWhereHas('author', function($query){
+                    //aqui se consulta el nombre del autor para que se pueda buscar el libro por el autor que se busca.
+                    $query->where('name', 'like', '%' . request('search') . '%');
+                });
+            });
+        }
         
         //aqui coloque la paginacion para que se muestre 10 libros y que cuando se cmbie de pagina con un filtro o busqueda se mantenga eso sin que cambie o elimine
-        ->paginate(10)->withQueryString();
+        $books = $books->paginate(10)->withQueryString();
+        
+        $authors = Author::all();
 
-        return view('books.index',compact('books'));
+        return view('books.index',compact('books', 'authors'));
     }
 
     /**
